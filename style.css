@@ -1,0 +1,102 @@
+@font-face {
+  font-family: "Bodoni";
+  src: url("./fonts/Bodoni\ 72\ OS.ttc") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+.logo-home img {
+  width: 90px !important;
+  padding-top: 11px;
+}
+.color button {
+  color: #7b7663 !important;
+  font-weight: 600;
+  font-size: 20px !important;
+}
+.header-line {
+  position: fixed;
+  left: 53%;
+  background-image: url(./img/vera/SVG/Asset\ 3.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 33%;
+  background-size: contain;
+  top: 4rem;
+  z-index: 2;
+  height: 50px;
+}
+
+.color {
+  color: #7b7663 !important;
+  padding: 30px !important;
+  border-radius: 5px !important;
+}
+.header {
+  border-radius: 5px !important;
+}
+h1 {
+  font-size: 9rem !important;
+  font-family: "Bodoni" !important;
+  letter-spacing: 2px;
+}
+button,
+span,
+p,
+h2 {
+  font-family: "Bodoni" !important;
+}
+
+.portfolio-stack__title {
+  font-size: 7rem;
+}
+.portfolio-stack__descr h5 {
+  font-size: 3rem;
+}
+.portfolio-stack__descr ul {
+  list-style: disc;
+  padding-left: 25px;
+}
+.portfolio-stack__descr .pricing {
+  padding-left: 10px;
+}
+h1 span {
+  font-family: "Bodoni Moda", serif;
+  font-style: italic;
+}
+#headline img {
+  width: 200px;
+  height: 100%;
+}
+#headline {
+  align-items: center;
+  gap: 50px;
+  justify-content: center;
+  width: 100%;
+}
+.div-button button {
+  background-color: #ffffe3;
+  padding: 13px 30px;
+  font-weight: 600;
+  margin-top: 20px;
+  font-family: sans-serif;
+  color: #101013;
+  border-radius: 5px;
+}
+.div-button {
+  margin-top: 50px;
+}
+.border-top {
+  border-color: #53534b !important;
+}
+.right {
+  right: 0 !important;
+  left: auto !important;
+}
+#portfolio {
+}
+/* .content-service {
+  position: absolute;
+  top: 5%;
+  z-index: 999;
+} */
