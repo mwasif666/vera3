@@ -8,97 +8,152 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        @import url(https://fonts.googleapis.com/css?family=Open+Sans:600);
+
         body {
-            background-color: #f8f9fa;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        .service-header {
-            text-align: center;
-            margin-bottom: 40px;
-            padding-bottom: 15px;
-            position: relative;
-        }
-
-        .service-header h2 {
+            font-family: 'Open Sans', sans-serif;
             font-weight: 600;
-            color: #333;
-            margin-bottom: 15px;
+            font-size: 40px;
         }
 
-        .service-header::after {
-            content: '';
+        .text {
             position: absolute;
-            bottom: 0;
+            width: 450px;
             left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: linear-gradient(90deg, #8e9eab, #eef2f3);
+            margin-left: -225px;
+            height: 40px;
+            top: 50%;
+            margin-top: -20px;
         }
 
-        .accordion-item {
-            margin-bottom: 15px;
-            border: none;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
+        p {
+            display: inline-block;
+            vertical-align: top;
+            margin: 0;
         }
 
-        .accordion-item:hover {
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.12);
+        .wording {
+            position: absolute;
+            width: 220px;
+            opacity: 0;
         }
 
-        .accordion-button {
-            font-weight: 500;
-            background-color: white;
-            color: #333;
-            padding: 18px 20px;
-            border: none;
-            box-shadow: none !important;
+        .letter {
+            display: inline-block;
+            position: relative;
+            float: left;
+            transform: translateZ(25px);
+            transform-origin: 50% 50% 25px;
         }
 
-        .accordion-button:not(.collapsed) {
-            background-color: white;
-            color: #000;
-            font-weight: 600;
+        .letter.out {
+            transform: rotateX(90deg);
+            transition: transform 0.32s cubic-bezier(0.55, 0.055, 0.675, 0.19);
         }
 
-        .accordion-button::after {
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23333'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
-            transform: scale(1.2);
+        .letter.behind {
+            transform: rotateX(-90deg);
         }
 
-        .accordion-button:not(.collapsed)::after {
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23000'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+        .letter.in {
+            transform: rotateX(0deg);
+            transition: transform 0.38s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        .accordion-body {
-            background-color: white;
-            padding: 20px;
-            border-top: 1px solid rgba(0, 0, 0, 0.05);
-            font-size: 0.95rem;
-            line-height: 1.6;
-            color: #555;
+        .wisteria {
+            color: #8e44ad;
         }
 
-        .service-icon {
-            margin-right: 12px;
-            color: #8e9eab;
-            font-size: 1.1rem;
+        .belize {
+            color: #2980b9;
         }
 
-        .accordion-button:not(.collapsed) .service-icon {
-            color: #6c7a89;
+        .pomegranate {
+            color: #c0392b;
+        }
+
+        .green {
+            color: #16a085;
+        }
+
+        .midnight {
+            color: #2c3e50;
         }
     </style>
 </head>
 
 <body>
 
+    <div class="text">
+        <p>Nachos are</p>
+        <p>
+            <span class="wording wisteria">tasty.</span>
+            <span class="wording belize">wonderful.</span>
+            <span class="wording pomegranate">fancy.</span>
+            <span class="wording green">beautiful.</span>
+            <span class="wording midnight">cheap.</span>
+        </p>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        var words = document.getElementsByClassName('wording');
+        var wordArray = [];
+        var currentWord = 0;
+
+        words[currentWord].style.opacity = 1;
+        for (var i = 0; i < words.length; i++) {
+            splitLetters(words[i]);
+        }
+
+        function changeWord() {
+            var cw = wordArray[currentWord];
+            var nw = currentWord == words.length - 1 ? wordArray[0] : wordArray[currentWord + 1];
+            for (var i = 0; i < cw.length; i++) {
+                animateLetterOut(cw, i);
+            }
+
+            for (var i = 0; i < nw.length; i++) {
+                nw[i].className = 'letter behind';
+                nw[0].parentElement.style.opacity = 1;
+                animateLetterIn(nw, i);
+            }
+
+            currentWord = (currentWord == wordArray.length - 1) ? 0 : currentWord + 1;
+        }
+
+        function animateLetterOut(cw, i) {
+            setTimeout(function () {
+                cw[i].className = 'letter out';
+            }, i * 80);
+        }
+
+        function animateLetterIn(nw, i) {
+            setTimeout(function () {
+                nw[i].className = 'letter in';
+            }, 340 + (i * 80));
+        }
+
+        function splitLetters(word) {
+            var content = word.innerHTML;
+            word.innerHTML = '';
+            var letters = [];
+            for (var i = 0; i < content.length; i++) {
+                var letter = document.createElement('span');
+                letter.className = 'letter';
+                letter.innerHTML = content.charAt(i);
+                word.appendChild(letter);
+                letters.push(letter);
+            }
+
+            wordArray.push(letters);
+        }
+
+        changeWord();
+        setInterval(changeWord, 4000);
+
+
+    </script>
 </body>
 
 </html>
