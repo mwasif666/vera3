@@ -407,6 +407,15 @@ form textarea:focus {
   right: 30px;
   transition: transform 0.3s;
 }
+.video-main2 {
+  width: 110px;
+  border-radius: 10px;
+  height: 40px;
+  position: relative;
+  right: -73px;
+  top: 21px;
+  transition: transform 0.3s;
+}
 .popup {
   display: flex;
   align-items: center;
