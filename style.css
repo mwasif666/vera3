@@ -49,6 +49,7 @@ h2 {
 
 .portfolio-stack__title {
   font-size: 7rem;
+  line-height: 56px;
 }
 .portfolio-stack__descr h5 {
   font-size: 3rem;
@@ -90,7 +91,7 @@ h1 span {
   border-color: #53534b !important;
 }
 .right {
-  right: 0 !important;
+  right: 70px !important;
   left: auto !important;
 }
 #portfolio {

@@ -40,7 +40,6 @@
   <link rel="stylesheet" type="text/css" href="css/main.css" />
   <link rel="stylesheet" type="text/css" href="css/vera.css" />
   <!-- Template Styles End -->
-
   <!-- Custom Browser Color Start -->
   <meta name="theme-color" media="(prefers-color-scheme: light)" content="#BABEC8" />
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#141414" />
@@ -137,7 +136,10 @@
                   <h1 class="headline__title loading__item">
                     Self-Care, <span> Redefined. </span>
                   </h1>
-                  <img src="./img/vera/home.png" alt="" />
+                  <video class="video-main" src="./img/vera/1.mp4" autoplay loop muted
+                    onclick="openVideoPopup(this)"></video>
+
+
                 </div>
                 <div class="text-center mt-5">
                   <div class="div-button">
@@ -267,7 +269,7 @@
                         class="portfolio-stack__inner portfolio-item-1 popup-trigger">
                         <div class="row align-items-center">
                           <div class="col-lg-6">
-                            <img src="./img/vera/01.png" alt="" class="img-fluid">
+                            <img src="./img/products/01 - Skin and Body.png" alt="" class="img-fluid">
                           </div>
                           <div class="col-lg-6">
                             <div class="portfolio-stack__descr right">
@@ -306,19 +308,19 @@
                         class="portfolio-stack__inner portfolio-item-2 popup-trigger">
                         <div class="row align-items-center">
                           <div class="col-lg-6 order-lg-2">
-                            <img src="./img/vera/01.png" alt="" class="img-fluid">
+                            <img src="./img/products/02 - Hair and Growth.png" alt="" class="img-fluid">
                           </div>
                           <div class="col-lg-6 order-lg-1">
                             <div class="portfolio-stack__descr">
-                              <h2 class="portfolio-stack__title">Skin & Body</h2>
+                              <h2 class="portfolio-stack__title">Hair & Grooming</h2>
                               <div class="d-flex my-5" style="gap: 100px;">
                                 <ul class="text-white">
-                                  <li>Thermal Bath</li>
-                                  <li>Sports Massage</li>
+                                  <li>Beard Trimming</li>
+                                  <li></li>
                                 </ul>
                                 <ul class="text-white">
-                                  <li>Thermal Bath</li>
-                                  <li>Sports Massage</li>
+                                  <li>Haircut</li>
+                                  <li>Styling</li>
                                 </ul>
                               </div>
                               <div class="d-flex align-items-center pricing" style="gap: 100px;">
@@ -343,19 +345,19 @@
                         class="portfolio-stack__inner portfolio-item-3 popup-trigger">
                         <div class="row align-items-center">
                           <div class="col-lg-6">
-                            <img src="./img/vera/01.png" alt="" class="img-fluid">
+                            <img src="./img/products/03 - Beauty and Finish.png" alt="" class="img-fluid">
                           </div>
                           <div class="col-lg-6">
                             <div class="portfolio-stack__descr right">
-                              <h2 class="portfolio-stack__title">Skin & Body</h2>
+                              <h2 class="portfolio-stack__title">Beauty & Finish</h2>
                               <div class="d-flex my-5" style="gap: 100px;">
                                 <ul class="text-white">
-                                  <li>Thermal Bath</li>
-                                  <li>Sports Massage</li>
+                                  <li>Eye Shadow</li>
+                                  <li>Make-up</li>
                                 </ul>
                                 <ul class="text-white">
-                                  <li>Thermal Bath</li>
-                                  <li>Sports Massage</li>
+                                  <li>Curated Procuts</li>
+                                  <li></li>
                                 </ul>
                               </div>
                               <div class="d-flex align-items-center pricing" style="gap: 100px;">
@@ -380,19 +382,18 @@
                         class="portfolio-stack__inner portfolio-item-4 popup-trigger">
                         <div class="row align-items-center">
                           <div class="col-lg-6 order-lg-2">
-                            <img src="./img/vera/01.png" alt="" class="img-fluid">
+                            <img src="./img/products/04 - Hnads and Feets.png" alt="" class="img-fluid">
                           </div>
                           <div class="col-lg-6 order-lg-1">
                             <div class="portfolio-stack__descr">
-                              <h2 class="portfolio-stack__title">Skin & Body</h2>
+                              <h2 class="portfolio-stack__title">Hands & Feet</h2>
                               <div class="d-flex my-5" style="gap: 100px;">
                                 <ul class="text-white">
-                                  <li>Thermal Bath</li>
-                                  <li>Sports Massage</li>
+                                  <li>Manicure</li>
                                 </ul>
                                 <ul class="text-white">
-                                  <li>Thermal Bath</li>
-                                  <li>Sports Massage</li>
+                                  <li>Pedicure</li>
+
                                 </ul>
                               </div>
                               <div class="d-flex align-items-center pricing" style="gap: 100px;">
@@ -1290,7 +1291,12 @@
   <!-- Mobile Menu Bottom Placeholder Start -->
   <div class="header-offset"></div>
   <!-- Mobile Menu Bottom Placeholder End -->
-
+  <div id="videoPopup" class="popup">
+    <span class="close" onclick="closeVideoPopup()">&times;</span>
+    <video controls autoplay loop>
+      Your browser does not support the video tag.
+    </video>
+  </div>
   <!-- To Top Button Start -->
   <a href="#0" id="to-top" class="btn btn-to-top slide-up">
     <i class="ph ph-arrow-up"></i>
@@ -1425,7 +1431,42 @@
     // Open first panel by default if desired
     // document.querySelector('.panel-header').click();
   </script>
+  <script>
+    function openVideoPopup(videoElem) {
+      const popup = document.getElementById('videoPopup');
+      const popupVideo = popup.querySelector('video');
 
+      // Set video source
+      popupVideo.src = videoElem.src;
+
+      // Activate popup
+      popup.classList.add('active');
+
+      // Play video after animation starts
+      setTimeout(() => {
+        popupVideo.play();
+      }, 200);
+    }
+
+    function closeVideoPopup() {
+      const popup = document.getElementById('videoPopup');
+      const popupVideo = popup.querySelector('video');
+
+      // Pause video
+      popupVideo.pause();
+
+      // Deactivate popup
+      popup.classList.remove('active');
+    }
+
+    // Close when clicking outside video
+    document.addEventListener('click', function (event) {
+      const popup = document.getElementById('videoPopup');
+      if (event.target === popup) {
+        closeVideoPopup();
+      }
+    });
+  </script>
 </body>
 
 </html>

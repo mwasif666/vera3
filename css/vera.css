@@ -399,3 +399,61 @@ form textarea:focus {
 .midnight {
   color: white;
 }
+.video-main {
+  width: 190px;
+  border-radius: 10px;
+  height: 110px;
+  position: relative;
+  right: 30px;
+  transition: transform 0.3s;
+}
+.popup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease-out;
+}
+
+.popup.active {
+  background-color: rgba(0, 0, 0, 0.9);
+  opacity: 1;
+  visibility: visible;
+}
+
+.popup video {
+  max-width: 90%;
+  max-height: 90%;
+  transform: scale(0.8);
+  opacity: 0;
+  transition: all 0.3s ease-out 0.1s;
+}
+
+.popup.active video {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.close {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  color: white;
+  font-size: 35px;
+  font-weight: bold;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s ease-out 0.2s;
+}
+
+.popup.active .close {
+  opacity: 1;
+}
